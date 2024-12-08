@@ -151,9 +151,7 @@ class LinkedList:
         return self._last.index + 1
     
     def clear(self):
-        for node in self:
-            node.left = None
-            node.right = None
+        self._first = self._last = None
 
     def clone(self):
         return LinkedList(*self.to_list())
@@ -164,9 +162,8 @@ class LinkedList:
     def __repr__(self) -> str:
         return str(self.to_list())
 
-
-l = LinkedList("a", "b", "c", "d")
-# l = LinkedList()
-l.change(-1, "e")
-print(l)
-
+if __name__ == "__main__":
+    l = LinkedList("a", "b", "c", "d")
+    # l = LinkedList()
+    l.clear()
+    print(l)
