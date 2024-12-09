@@ -60,12 +60,12 @@ class LinkedList:
     def at(self, index: int):
         return self._get(index).value
 
-    def find(self, value) -> bool:
+    def find(self, criteria: callable):
         for node in self:
-            if node.value == value:
-                return True
-
-        return False
+            if criteria(node.value):
+                return node.value
+        
+        return None
 
     def insert(self, at: int, *args):
         """inserts BEFORE index"""
@@ -163,7 +163,5 @@ class LinkedList:
         return str(self.to_list())
 
 if __name__ == "__main__":
-    l = LinkedList("a", "b", "c", "d")
-    # l = LinkedList()
-    l.clear()
-    print(l)
+    l = LinkedList("a", "bx", "c", "d")
+    print(l.find(lambda x: len(x) == 2))
