@@ -64,7 +64,7 @@ class LinkedList:
         for node in self:
             if criteria(node.value):
                 return node.value
-        
+
         return None
 
     def insert(self, at: int, *args):
@@ -110,7 +110,7 @@ class LinkedList:
             return
 
         self.insert(self.size, value)
-    
+
     def _remove(self, node: Node):
         if node.index == 0:
             node.right.left = None
@@ -121,27 +121,27 @@ class LinkedList:
         else:
             node.right.left = node.left
             node.left.right = node.right
-            
+
         node.left = node.right = None
-      
+
     def remove_at(self, index: int):
         node = self._get(index)
         self._remove(node)
-               
+
     def remove(self, value):
         for node in self:
             if node.value == value:
                 self._remove(node)
                 return
-        
+
         raise ValueError(f"{value} not found")
 
     def remove_first(self):
         self.remove_at(0)
-    
+
     def remove_last(self):
         self.remove_at(self.size - 1)
-    
+
     def change(self, index: int, new_value):
         node = self._get(index)
         node.value = new_value
@@ -149,18 +149,19 @@ class LinkedList:
     @property
     def size(self) -> int:
         return self._last.index + 1
-    
+
     def clear(self):
         self._first = self._last = None
 
     def clone(self):
         return LinkedList(*self.to_list())
-    
+
     def to_list(self) -> list:
         return [node.value for node in self]
 
     def __repr__(self) -> str:
         return str(self.to_list())
+
 
 if __name__ == "__main__":
     l = LinkedList("a", "bx", "c", "d")
